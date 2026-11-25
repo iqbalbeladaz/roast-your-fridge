@@ -19,6 +19,9 @@ def main() -> None:
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(ROAST)
+    # Verify the write: the graded artifact must be exactly this line.
+    with open("/output/entry.txt", encoding="utf-8") as f:
+        assert f.read() == ROAST, "entry.txt differs from the roast"
 
 
 if __name__ == "__main__":
